@@ -9,8 +9,8 @@ namespace ControleFinanca.Api.Contract.NaturezaDeLancamento
     {
         public int Id { get; set; }
         public int IdUsuario { get; set; }
-        public DateTime IDataCadastro { get; set; }
-        public DateTime? IDateInativacao { get; set; }
+        public DateTime DataCadastro { get; set; }
+        public DateTime? DataInativacao { get; set; }
 
     }
 }

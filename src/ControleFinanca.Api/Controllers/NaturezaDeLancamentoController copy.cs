@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using ControleFinanca.Api.Contract.NaturezaDeLancamento;
 using ControleFinanca.Api.Contract.Usuario;
 using ControleFinanca.Api.Domain.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -12,45 +13,26 @@ using Microsoft.AspNetCore.Mvc;
 namespace ControleFinanca.Api.Controllers
 {
     [ApiController]
-    [Route("usuario")]
-    public class UsuarioController : BaseController
+    [Route("naturezas-de-lancamento")]
+    public class NaturezaDeLancamentoController : BaseController
     {
+        private readonly IService<NaturezaDeLancamentoRequestContract, NaturezaDeLancamentoResponseContract, int> _naturezaDeLancamentoService;
 
-        private readonly IUsuarioService _usuarioService;
-        public UsuarioController(IUsuarioService usuarioService)
+        public NaturezaDeLancamentoController(
+            IService<NaturezaDeLancamentoRequestContract, NaturezaDeLancamentoResponseContract, int> naturezaDeLancamentoService)
         {
-            _usuarioService = usuarioService;
-        }
-
-
-
-        [HttpPost]
-        [Route("login")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Autenticar(UsuarioLoginRequestContract contrato)
-        {
-            try
-            {
-                return Ok(await _usuarioService.Autenticar(contrato));
-            }
-            catch (AuthenticationException ex)
-            {
-                return Unauthorized(new{StatusCode = 401, message = ex.Message});
-            }
-            catch (Exception ex)
-            {
-                return Problem(ex.Message);
-            }
+            _naturezaDeLancamentoService = naturezaDeLancamentoService;
         }
 
 
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Adicionar(UsuarioRequestContract contrato)
+        [Authorize]
+        public async Task<IActionResult> Adicionar(NaturezaDeLancamentoRequestContract contrato)
         {
             try
-            {
-                return Created("", await _usuarioService.Adicionar(contrato, 0));
+            {  
+                _idUsuario = ObterIdUsuarioLogado();
+                return Created("", await _naturezaDeLancamentoService.Adicionar(contrato, _idUsuario));
             }
             catch (Exception ex)
             {
@@ -59,13 +41,15 @@ namespace ControleFinanca.Api.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Obter()
         {
             try
             {
-                return Ok(await _usuarioService.Obter(0));
+                _idUsuario = ObterIdUsuarioLogado();
+                return Ok(await _naturezaDeLancamentoService.Obter(_idUsuario));
             }
+            
             catch (Exception ex)
             {
                 return Problem(ex.Message);
@@ -79,24 +63,27 @@ namespace ControleFinanca.Api.Controllers
         {
             try
             {
-                return Ok(await _usuarioService.Obter(id, 0));
+                _idUsuario = ObterIdUsuarioLogado();
+                return Ok(await _naturezaDeLancamentoService.Obter(id, _idUsuario));
             }
+            
             catch (Exception ex)
             {
                 return Problem(ex.Message);
             }
         }
 
-
         [HttpPut]
         [Route("{id}")]
         [Authorize]
-        public async Task<IActionResult> Atualizar(int id, UsuarioRequestContract contrato)
+        public async Task<IActionResult> Atualizar(int id, NaturezaDeLancamentoRequestContract contrato)
         {
             try
             {
-                return Ok(await _usuarioService.Atualizar(id, contrato, 0));
+                _idUsuario = ObterIdUsuarioLogado();
+                return Ok(await _naturezaDeLancamentoService.Atualizar(id, contrato, _idUsuario));
             }
+            
             catch (Exception ex)
             {
                 return Problem(ex.Message);
@@ -105,20 +92,20 @@ namespace ControleFinanca.Api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-       [Authorize]
+        [Authorize]
         public async Task<IActionResult> Deletar(int id)
         {
             try
             {
-                await _usuarioService.Inativar(id, 0);
+                _idUsuario = ObterIdUsuarioLogado();
+                await _naturezaDeLancamentoService.Inativar(id, _idUsuario);
                 return NoContent();
             }
+            
             catch (Exception ex)
             {
                 return Problem(ex.Message);
             }
         }
-
-
     }
 }

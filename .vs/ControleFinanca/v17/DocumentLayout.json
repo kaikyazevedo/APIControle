@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{3EF538A7-180E-4581-80CC-3DF88F73E4F7}|src\\ControleFinanca.Api\\ControleFinanca.Api.csproj|c:\\users\\jhonathan\\documents\\kaiky\\apicontrole\\src\\controlefinanca.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EF538A7-180E-4581-80CC-3DF88F73E4F7}|src\\ControleFinanca.Api\\ControleFinanca.Api.csproj|solutionrelative:src\\controlefinanca.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EF538A7-180E-4581-80CC-3DF88F73E4F7}|src\\ControleFinanca.Api\\ControleFinanca.Api.csproj|c:\\users\\jhonathan\\documents\\kaiky\\apicontrole\\src\\controlefinanca.api\\controlefinanca.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{3EF538A7-180E-4581-80CC-3DF88F73E4F7}|src\\ControleFinanca.Api\\ControleFinanca.Api.csproj|solutionrelative:src\\controlefinanca.api\\controlefinanca.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEA75CC5-562C-4685-958E-74F56A1A44EC}|test\\ControleFinanca.Test\\ControleFinanca.Test.csproj|c:\\users\\jhonathan\\documents\\kaiky\\apicontrole\\test\\controlefinanca.test\\controlefinanca.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FEA75CC5-562C-4685-958E-74F56A1A44EC}|test\\ControleFinanca.Test\\ControleFinanca.Test.csproj|solutionrelative:test\\controlefinanca.test\\controlefinanca.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 100,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ControleFinanca.Test",
-              "DocumentMoniker": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\test\\ControleFinanca.Test\\ControleFinanca.Test.csproj",
-              "RelativeDocumentMoniker": "test\\ControleFinanca.Test\\ControleFinanca.Test.csproj",
-              "ToolTip": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\test\\ControleFinanca.Test\\ControleFinanca.Test.csproj",
-              "RelativeToolTip": "test\\ControleFinanca.Test\\ControleFinanca.Test.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-16T00:13:26.003Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ControleFinanca.Api.http",
-              "DocumentMoniker": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\src\\ControleFinanca.Api\\ControleFinanca.Api.http",
-              "RelativeDocumentMoniker": "src\\ControleFinanca.Api\\ControleFinanca.Api.http",
-              "ToolTip": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\src\\ControleFinanca.Api\\ControleFinanca.Api.http",
-              "RelativeToolTip": "src\\ControleFinanca.Api\\ControleFinanca.Api.http",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2024-08-16T00:13:22.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\src\\ControleFinanca.Api\\Program.cs",
-              "RelativeDocumentMoniker": "src\\ControleFinanca.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\src\\ControleFinanca.Api\\Program.cs",
-              "RelativeToolTip": "src\\ControleFinanca.Api\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T00:13:20.396Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

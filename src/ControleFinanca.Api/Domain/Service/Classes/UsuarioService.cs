@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Authentication;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using ControleFinanca.Api.Contract.Usuario;
 using ControleFinanca.Api.Domain.Models;
 using ControleFinanca.Api.Domain.Repository.Interfaces;
 using ControleFinanca.Api.Domain.Service.Interfaces;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using ControleFinancas.Api.Domain.Services.Classes;
 
 namespace ControleFinanca.Api.Domain.Repository.Classes
 {
@@ -17,12 +14,17 @@ namespace ControleFinanca.Api.Domain.Repository.Classes
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IMapper _mapper;
+
+        private readonly TokenService _tokenService;
+
         public UsuarioService(
             IUsuarioRepository usuarioRepository,
-            IMapper mapper)
+            IMapper mapper,
+            TokenService tokenService)
         {
             _usuarioRepository = usuarioRepository;
             _mapper = mapper;
+            _tokenService = tokenService;
         }
         public async Task<UsuarioResponseContract> Adicionar(UsuarioRequestContract entidade, int idUsuario)
         {
@@ -64,10 +66,25 @@ namespace ControleFinanca.Api.Domain.Repository.Classes
             return _mapper.Map<UsuarioResponseContract>(usuario);
         }
 
-        public Task<UsuarioLoginResponseContract> Autenticar(UsuarioLoginRequestContract usuarioLoginRequestContract)
+        public async Task<UsuarioLoginResponseContract> Autenticar(UsuarioLoginRequestContract usuarioLoginRequestContract)
         {
-            throw new NotImplementedException();
+            var usuario = await Obter(usuarioLoginRequestContract.Email);
+        
+            var hashSenha = GerarHashSenha(usuarioLoginRequestContract.Senha);
+
+            if(usuario is null || usuario.Senha != hashSenha)
+            {
+
+                throw new AuthenticationException("Usuário ou senha inválida.");
+            }
+
+            return new UsuarioLoginResponseContract {
+                Id = usuario.Id,
+                Email = usuario.Email,
+                Token = _tokenService.GerarToken(_mapper.Map<Usuario>(usuario))
+            };        
         }
+
 
         public async Task Inativar(int id, int idUsuario)
         {

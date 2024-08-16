@@ -5,6 +5,7 @@ using ControleFinanca.Api.Data;
 using ControleFinanca.Api.Domain.Repository.Classes;
 using ControleFinanca.Api.Domain.Repository.Interfaces;
 using ControleFinanca.Api.Domain.Service.Interfaces;
+using ControleFinancas.Api.Domain.Services.Classes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,7 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
     .AddSingleton(builder.Configuration)
     .AddSingleton(builder.Environment)
     .AddSingleton(mapper)
+    .AddScoped<TokenService>()
     .AddScoped<IUsuarioRepository, UsuarioRepository>();
     builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 }
@@ -113,12 +115,13 @@ static void ConfigurarAplicacao(WebApplication app)
     app.UseDeveloperExceptionPage()
         .UseRouting();
 
-    app.UseSwagger()
-        .UseSwaggerUI(c =>
-        {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ControleFinancas.Api v1");
-                c.RoutePrefix = string.Empty;
-        });
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ControleFinancas.Api v1");
+        c.RoutePrefix = string.Empty; // Para acessar diretamente na raiz
+    });
+
 
     app.UseCors(x => x
         .AllowAnyOrigin() // Permite todas as origens

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using ControleFinanca.Api.Contract.Usuario;
 using ControleFinanca.Api.Domain.Service.Interfaces;
@@ -20,6 +21,28 @@ namespace ControleFinanca.Api.Controllers
         {
             _usuarioService = usuarioService;
         }
+
+
+
+        [HttpPost]
+        [Route("login")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Autenticar(UsuarioLoginRequestContract contrato)
+        {
+            try
+            {
+                return Ok(await _usuarioService.Autenticar(contrato));
+            }
+            catch (AuthenticationException ex)
+            {
+                return Unauthorized(new{StatusCode = 401, message = ex.Message});
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -51,7 +74,7 @@ namespace ControleFinanca.Api.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Obter(int id)
         {
             try
@@ -67,7 +90,7 @@ namespace ControleFinanca.Api.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Atualizar(int id, UsuarioRequestContract contrato)
         {
             try
@@ -82,7 +105,7 @@ namespace ControleFinanca.Api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        [AllowAnonymous]
+       [Authorize]
         public async Task<IActionResult> Deletar(int id)
         {
             try

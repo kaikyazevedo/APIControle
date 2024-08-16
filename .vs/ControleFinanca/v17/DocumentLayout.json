@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3EF538A7-180E-4581-80CC-3DF88F73E4F7}|src\\ControleFinanca.Api\\ControleFinanca.Api.csproj|c:\\users\\jhonathan\\documents\\kaiky\\apicontrole\\src\\controlefinanca.api\\automapper\\naturezadelancamentoprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EF538A7-180E-4581-80CC-3DF88F73E4F7}|src\\ControleFinanca.Api\\ControleFinanca.Api.csproj|solutionrelative:src\\controlefinanca.api\\automapper\\naturezadelancamentoprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 100,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NaturezaDeLancamentoProfile.cs",
+              "DocumentMoniker": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\src\\ControleFinanca.Api\\AutoMapper\\NaturezaDeLancamentoProfile.cs",
+              "RelativeDocumentMoniker": "src\\ControleFinanca.Api\\AutoMapper\\NaturezaDeLancamentoProfile.cs",
+              "ToolTip": "C:\\Users\\jhonathan\\Documents\\Kaiky\\APIControle\\src\\ControleFinanca.Api\\AutoMapper\\NaturezaDeLancamentoProfile.cs",
+              "RelativeToolTip": "src\\ControleFinanca.Api\\AutoMapper\\NaturezaDeLancamentoProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T06:20:37.233Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

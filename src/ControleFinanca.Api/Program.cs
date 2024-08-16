@@ -1,9 +1,11 @@
 using System.Text;
 using AutoMapper;
 using ControleFinanca.Api.AutoMapper;
+using ControleFinanca.Api.Contract.NaturezaDeLancamento;
 using ControleFinanca.Api.Data;
 using ControleFinanca.Api.Domain.Repository.Classes;
 using ControleFinanca.Api.Domain.Repository.Interfaces;
+using ControleFinanca.Api.Domain.Service.Classes;
 using ControleFinanca.Api.Domain.Service.Interfaces;
 using ControleFinancas.Api.Domain.Services.Classes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -35,6 +37,7 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
 
     var config = new MapperConfiguration(cfg => {
         cfg.AddProfile<UsuarioProfile>();
+        cfg.AddProfile<NaturezaDeLancamentoProfile>();
     });
 
     IMapper mapper = config.CreateMapper();
@@ -44,10 +47,11 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
     .AddSingleton(builder.Environment)
     .AddSingleton(mapper)
     .AddScoped<TokenService>()
-    .AddScoped<IUsuarioRepository, UsuarioRepository>();
-    builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+    .AddScoped<IUsuarioService, UsuarioService>()
+    .AddScoped<IUsuarioRepository, UsuarioRepository>()
+    .AddScoped<INaturezaDeLancamentoRepository, NaturezaDeLancamentoRepository>()
+    .AddScoped<IService<NaturezaDeLancamentoRequestContract, NaturezaDeLancamentoResponseContract, int>, NaturezaDeLancamentoService>();
 }
-
 // Configura o serviços da API.
 static void ConfigurarServices(WebApplicationBuilder builder)
 {
